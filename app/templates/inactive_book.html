@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<br><br>
+<u><h3>InActive Books</h3></u><br></br>
+<table class="table is_publish">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Is Publish</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for book in allbook %}
+            <tr>
+            <th scope="row">{{book.id}}</th>
+            <td>{{book.name}}</td>
+            <td>{{book.price}}</td>
+            <td>{{book.qty}}</td>
+            <td>{{book.is_publish}}</td>
+
+            
+            </tr>
+            
+        {% endfor %}
+     
+    </tbody>
+  </table>
+
+{% endblock %}
+
+   

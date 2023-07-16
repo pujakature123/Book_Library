@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <br><br>
+
+    <u><h3> Add Book </h3></u><br><br>
+    <form method="post">
+    {% csrf_token %}
+    <lable>Book Name:- </lable>
+    <input type="text" name="nm" required> <br> <br>
+
+    <lable>Book Price:- </lable>
+    <input type="number" name="prc" required>  <br> <br>
+
+    <label>Book Quantity:- </label>
+    <input type="number" name="qty">  <br> <br>
+
+    <label>Book Is Publish:- </label>
+    {% if single_book.is_publish %}
+        YES &nbsp; <input type="radio" value="YES" name="is_pub" checked > &nbsp;  &nbsp;
+        NO  &nbsp; <input type="radio" value="NO" name="is_pub" > &nbsp;  &nbsp;
+    {% else %}
+        YES &nbsp; <input type="radio" value="YES" name="is_pub"> &nbsp;  &nbsp;
+        NO  &nbsp; <input type="radio" value="NO" name="is_pub" checked > &nbsp;  &nbsp; 
+    {% endif %}
+
+
+    <input type="submit" class="btn btn-primary">
+    </form>
+
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<br>
+<br>
+<u><h3>Active Book</h3></u><br><br>
+<table class="table is_publish table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Is Publish</th>
+        <th scope="col">Is Active</th>
+        <th scope="col">Action</th>
+        <th scope="col">File Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for book in allbook %}
+            <tr>
+            <th scope="row">{{book.id}}</th>
+            <td>{{book.name}}</td>
+            <td>{{book.price}}</td>
+            <td>{{book.qty}}</td>
+            <td>{{book.is_publish}}</td>
+            <td>{{book.is_active}}</td>
+            
+            <td>
+                <a href="{% url 'show_single_book' book.id %}" class="btn btn-primary">View</a>
+                <a href="{% url 'edit_single_book' book.id %}" class="btn btn-warning">Edit</a>
+    
+                <form action="{% url 'delete_single_book' book.id %}" method="post">
+                  {% csrf_token %}
+                  <input type="submit" value="Hard Delete" class="btn btn-danger">
+                </form>
+                
+                <form action="{% url 'soft_delete_single_book' book.id %}" method="post">
+                  {% csrf_token %}
+                  <input type="submit" value="Soft Delete" class="btn btn-danger">
+                </form>
+
+            </td>
+            <td>
+              <a href="{% url 'create_csv' %}" class="btn btn-primary">Create CSV</a> 
+              <a href="{% url 'create_excle' %}" class="btn btn-primary">Create Excle</a> 
+
+              <br><br>
+              <form action="{% url 'upload_csv' %}" method="post"  enctype="multipart/form-data" >
+                {% csrf_token %}
+                <input type="file" name="csv_file">
+                <input type="submit" class="btn btn-primary" value="Upload CSV">
+
+              </form> <br> 
+            </td>            
+            </tr>
+        {% endfor %}
+     
+    </tbody>
+  </table>
+
+
+
+{% endblock %}

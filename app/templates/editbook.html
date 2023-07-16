@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{%  block content %}
+<h4>Edit Book</h4>
+
+<form method="post">
+    {% csrf_token %}
+    <label>Book Name :- </label>
+    <input type="text" name="nm" value="{{single_book.name}}" required> <br> <br>
+
+   <lable>Book Price :- </lable>
+    <input type="number" name="prc" value="{{single_book.price}}" required> <br> <br>
+
+    <label>Book Quantity:- </label>
+    <input type="number" name="qty" value="{{single_book.qty}}" required> <br> <br>
+
+    <label>Book Is_Publish :- </label>
+    {% if single_book.is_publish %}
+        yes &nbsp; <input type="radio" value="YES" name="is_pub" checked > &nbsp;  &nbsp;
+        no  &nbsp; <input type="radio" value="NO" name="is_pub" > &nbsp;  &nbsp;
+    {% else %}
+        yes &nbsp; <input type="radio" value="YES" name="is_pub"> &nbsp;  &nbsp;
+        no  &nbsp; <input type="radio" value="NO" name="is_pub" checked > &nbsp;  &nbsp; 
+    {% endif %}
+    <br> <br>
+    <input type="submit" class="btn btn-primary">
+    <!-- <a class="btn btn-primary">Submit</a>    second way -->
+
+</form>
+
+
+
+
+
+{% endblock %}

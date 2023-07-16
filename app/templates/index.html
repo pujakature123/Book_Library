@@ -1,0 +1,32 @@
+<html>
+    {% load static %}
+    <head>
+        <title>Library Application</title>
+        <link rel="stylesheet" href ="{%static 'css/bootstrap.min.css'%}">
+    </head>
+
+    <body>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'welcome_page' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'show_active_book' %}">Active Book</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_single_book' %}">Add Book</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'show_inactive_book' %}">InActive Book</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">User :- {{ user }}</a>
+            </li>
+          </ul>
+        <div class="container">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </body>
+</html>
