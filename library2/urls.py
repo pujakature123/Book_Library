@@ -40,7 +40,7 @@ urlpatterns = [
     path("create-excle/", file_views.create_excle, name="create_excle"),
     path("upload-csv/", file_views.upload_csv, name="upload_csv"),
     	
-    path("__debug__", include("debug_toolbar.urls"))
+   
 
 ]
 
